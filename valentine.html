@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Special ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #ff2e63;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background-color: #ff2e63;
+      color: white;
+      left: 30%;
+    }
+
+    #yesBtn:hover {
+      background-color: #ff004c;
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: #555;
+      color: white;
+      right: 30%;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 100, 0.3);
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0);
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💖 Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes ❤️</button>
+      <button id="noBtn">No 💔</button>
+    </div>
+  </div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+
+  // Move NO button randomly when mouse comes near
+  noBtn.addEventListener("mouseover", function () {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  // When YES clicked
+  yesBtn.addEventListener("click", function () {
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#ff4e8a,#ff9a9e);
+        color:white;
+        font-size:40px;
+        font-weight:bold;
+        text-align:center;
+      ">
+        💕 Shraddha! I Love You Forever 💕
+      </div>
+    `;
+  });
+
+  // Floating hearts effect
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
